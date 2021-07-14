@@ -1,0 +1,20 @@
+- hosts: localhost
+  become: no
+  gather_facts: false
+  tasks:
+    - include_role:
+        name: cluster-prod-tests
+      vars:
+        jobdir: /alaska/steveb/safe-tests/jobdir
+        cluster_prod_tests_mpi_module: openmpi/4.0.3-ziwdzwh
+        computes:
+          stdout_lines:
+            - openhpc-compute-0
+            - openhpc-compute-1
+            - openhpc-compute-2
+            - openhpc-compute-3
+            - openhpc-compute-4
+            - openhpc-compute-5
+            - openhpc-compute-6
+            - openhpc-compute-7
+        cluster_prod_tests_ucx_net_devices: mlx5_0:1
