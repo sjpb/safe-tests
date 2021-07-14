@@ -7,7 +7,7 @@
 {%if openhpc_tests_nodes is defined %}#SBATCH --nodelist={{ openhpc_tests_nodes }}{% endif %}
 
 module load {{ cluster_prod_tests_mpi_module }}
-mpicc -o nxnlatbw {{ role_path}}/files/mpi_nxnlatbw.c
+mpicc -o nxnlatbw mpi_nxnlatbw.c
 
 export UCX_NET_DEVICES={{ cluster_prod_tests_ucx_net_devices }}
 srun --mpi=pmix_v2 nxnlatbw
